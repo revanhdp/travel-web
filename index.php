@@ -17,7 +17,8 @@
                 <img class="mt-5 pt-5" src="tokyo.png" alt="">
                 
             </div>
-            <div class="col-7 bg-light d-flex flex-column justify-content-center align-items-center text-dark">
+            <div class="col-7 bg-light d-flex flex-column justify-content-center align-items-center text-dark position-relative">
+            <p class="text-center" style="position: absolute; top: 10px; right: 20px">Belum punya akun? Silahkan <a href="registrasi.php" >Daftar</a></p>
                 <h1 style="margin-bottom: 30px" class="mb-20">Login</h1>
                 <form action="login.php" method="POST" class="w-50">
                     <div class="mb-3">
@@ -27,10 +28,9 @@
                     </div>
                     <div class="mb-3 mt-4">
                         <label for="password" class="form-label fw-bold text-xl fs-5 ">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password" style="background-color: #EFEFEF">
                     </div>
 
-                    <p class="text-center">Belum punya akun? Silahkan <a  href="registrasi.php">Daftar</a></p>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

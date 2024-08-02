@@ -1,3 +1,19 @@
+<?php 
+session_start();
+include "../koneksi.php";
+
+if(!isset($_SESSION['username'])) {
+    header('Location: ../index.php');
+    exit();
+}
+
+$username = $_SESSION['username'];
+
+$sql = 'SELECT * FROM user';
+$result = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +24,7 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         body{
-            background-image: url("../homepage2.png");
+            background-image: url("../homepage.png");
             background-repeat: no-repeat;
             background-size: cover;   
             background-position: center center;
@@ -42,9 +58,15 @@
         </div>
     </nav>
 
-    <div class=" d-flex justify-content-center align-items-center flex-column" style="height:90vh; width:100%">
-        <p class="fs-1 text-light text-center" style="max-width: 600px; ">Access live travel updates ✈️, discussion forum 💬,currency converter 💵, and more... all on Travel+.</p>
-        <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="../japan">Large button</a></button>
+    <div style="height: 85vh;">
+        <div class="text-light" style="max-width: 20%; border: 1px solid black; border-radius: 3px; margin: 3% 0 0 5%">
+            <p class="fs-2">Hello, <?php echo ($username); ?></p>
+            <p>Mau travel kemana nich?</p>
+        </div>  
+        <div class=" d-flex justify-content-center align-items-center flex-column" style="height: 85vh; width:100%">
+            <p class="fs-1 text-light text-center" style="max-width: 600px; ">Access live travel updates ✈️, discussion forum 💬,currency converter 💵, and more... all on Travel+.</p>
+            <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="../japan">Large button</a></button>
+        </div>
     </div>
 
 

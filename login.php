@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
 
-                header("Location: home/index.php");
+                header("Location: home/homepage.php");
                 exit();
             } else {
                 $_SESSION['error_message'] = "Password salah";

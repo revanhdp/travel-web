@@ -28,6 +28,7 @@ if($result->num_rows > 0) {
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="background">
     <nav class="navbar navbar-expand-lg p-3 text-light d-flex justify-content-between fs-5" style="background-color: #41789F">
@@ -58,17 +59,35 @@ if($result->num_rows > 0) {
                     <a class="nav-link text-light" href="#">Special Offer</a>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">History</a>
+                    <a class="nav-link text-light" href="../history.php">History</a>
                 </li>
-                <li class=" text-light mx-3">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class='bx bxs-user-circle fs-1' style="margin-top: 0px"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="update.php">Setting</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="d-flex justify-content-between align-items-center" style="background-color: #41789F; padding: 0 300px 0 300px">
         <div style="max-width: 300px;">
-            <p class="fs-4 text-light">Japan</p>
+        <li class="nav-item dropdown" style="list-style-type: none">
+            <a class="nav-link dropdown-toggle text-light fs-4 pt-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Japan
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../japan">Japan</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../korea">Korea</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../china">China</a></li>
+            </ul>
+        </li>
             <p>Lorem ipsum dolor sit, ?</p>
         </div>
         <div>
@@ -80,14 +99,16 @@ if($result->num_rows > 0) {
         <?php foreach ($cards as $card) : ?>
         <!-- Card -->
             <div class="card" style="width: 18rem;">
-                <img src="<?php echo $card['image_path']; ?>" class="card-img-top" alt="...">
+                <img src="<?php echo $card['image_path']; ?>" class="card-img-top" style="height:200px" alt="...">
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title"><?php echo $card['judul'];?></h5>
-                        <p><strong>$19</strong></p>
+                        <p><strong>$<?php echo $card['harga']; ?></strong></p>
                     </div>
                     <p class="card-text"><?php echo $card['deskripsi']; ?></p>
-                    <button type="button" class="btn btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $card['id']; ?>">Lihat Detail</button>
+                    <button type="button" class="btn btn-primary mt-auto">
+                        <a class="text-light" style="text-decoration: none" href="detail.php?id=<?php echo $card['id']; ?>">Lihat Detail</a>
+                    </button>
                 </div>
             </div>
         <!-- End Card -->

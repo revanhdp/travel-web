@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div class="d-flex flex-wrap gap-3 mt-4" style="width: 80%; margin: auto">
+    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4" style="width: 80%; margin: auto">
     <div class="card" style="width: 18rem;">
             <img src="../home/assets/china.jpg" class="card-img-top" alt="...">
             <div class="card-body">

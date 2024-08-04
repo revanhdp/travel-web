@@ -22,9 +22,10 @@ $result = $conn->query($sql);
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         body{
-            background-image: url("../homepage.png");
+            background-image: url("../assets/homepage2.png");
             background-repeat: no-repeat;
             background-size: cover;   
             background-position: center center;
@@ -32,7 +33,7 @@ $result = $conn->query($sql);
         }
     </style>
 </head>
-<body class="background">
+<body class="background" style="overflow-y: hidden">
     <nav class="navbar navbar-expand-lg bg-none p-3 text-light d-flex justify-content-between fs-5">
         <div class="container-fluid d-flex mx-5">
             <a class="navbar-brand text-light" href="#">Navbar</a>
@@ -51,21 +52,31 @@ $result = $conn->query($sql);
                 <li class=" mx-3">
                     <a class="nav-link text-light" href="#">Special Offer</a>
                 </li>
-                <li class=" text-light mx-3">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <li class=" mx-3">
+                    <a class="nav-link text-light" href="../history.php">History</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class='bx bxs-user-circle fs-1'></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="update.php">Setting</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
     </nav>
 
     <div style="height: 85vh;">
-        <div class="text-light" style="max-width: 20%; border: 1px solid black; border-radius: 3px; margin: 3% 0 0 5%">
-            <p class="fs-2">Hello, <?php echo ($username); ?></p>
-            <p>Mau travel kemana nich?</p>
+        <div class="text-light" style="background-color: rgba(255,255,255,0.3);max-width: 20%; backdrop-filter: blur(10px) ; margin: 3% 0 0 5%; border-radius: 8px;">
+            <p class="fs-2 text-light ">Welcome Back, </p>
+            <p class="fs-1 text-light"> <?php echo ($username); ?></p>
         </div>  
-        <div class=" d-flex justify-content-center align-items-center flex-column" style="height: 85vh; width:100%">
+        <div class=" d-flex justify-content-center align-items-center flex-column" style="height: 65vh; width:100%">
             <p class="fs-1 text-light text-center" style="max-width: 600px; ">Access live travel updates ✈️, discussion forum 💬,currency converter 💵, and more... all on Travel+.</p>
-            <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="../japan">Large button</a></button>
+            <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="../destination/japan.php">Large button</a></button>
         </div>
     </div>
 

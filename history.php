@@ -86,13 +86,34 @@ $orders = $result->fetch_all(MYSQLI_ASSOC);
                         <h5 class="card-title"><?php echo $order['judul']; ?></h5>
                         <p class="card-text"><small class="text-muted">Jumlah Tiket: <?php echo $order['jumlah_tiket']; ?></small></p>
                         <p class="card-text"><small class="text-muted">Total Harga: $<?php echo $order['total_harga']; ?></small></p>
+                        <p class="card-text"><small class="text-muted">Waktu Dipesan: <?php echo $order['order_date']; ?></small></p>
                         <p class="card-text"><small class="text-muted">Metode Pembayaran: <?php echo $order['payment_method']; ?></small></p>
                         <p class="text-success">Lunas</p>
-                        <p class="btn btn-danger">Hapus</p>
-
+                        <a href="action/update.php?id=<?php echo $order['id']; ?>" class="btn btn-primary">Update</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $order['id']; ?>">Delete</button>
                     </div>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal<?php echo $order['id']; ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?php echo $order['id']; ?>" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel<?php echo $order['id']; ?>">Konfirmasi Penghapusan</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Apakah Anda yakin ingin menghapus item ini?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <a href="action/delete.php?id=<?php echo $order['id']; ?>" class="btn btn-danger">Hapus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal -->
             <?php endforeach; ?>
         </div>
     </div>

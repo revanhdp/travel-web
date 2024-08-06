@@ -1,9 +1,9 @@
 <?php 
 session_start();
-include "koneksi.php";
+include "../koneksi.php";
 
 if (!isset($_SESSION['username'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('iiiii', $user_id, $destination_cards_id, $jumlah_tiket, $payment_method_id, $total_harga);
 
     if ($stmt->execute()) {
-        header('Location: history.php');
+        header('Location: ../page/history.php');
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
     $conn->close();
 } else {
-    header('Location: home/homepage.php');
+    header('Location: ../page/homepage.php');
     exit();
 }
 ?>

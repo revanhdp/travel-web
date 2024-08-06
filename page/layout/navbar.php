@@ -5,7 +5,7 @@
         <div class="collapse navbar-collapse d-flex mx-5" id="navbarNav">
             <ul class="navbar-nav d-flex mx-5" style="width: max-content;">
                 <li class=" mx-3">
-                    <a class="nav-link active text-light" aria-current="page" href="../home/homepage.php">Home</a>
+                    <a class="nav-link active text-light" aria-current="page" href="../homepage.php">Home</a>
                 </li>
                 <li class=" mx-3">
                     <a class="nav-link text-light" href="#">Features</a>
@@ -15,27 +15,27 @@
                         All Items
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../japan">Japan</a></li>
+                        <li><a class="dropdown-item" href="japan.php">Japan</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="../korea">Korea</a></li>
+                        <li><a class="dropdown-item" href="korea.php">Korea</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="../china">China</a></li>
+                        <li><a class="dropdown-item" href="china.php">China</a></li>
                     </ul>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">Special Offer</a>
+                    <a class="nav-link text-light" href="specialoff.php">Special Offer</a>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="../history.php">History</a>
+                    <a class="nav-link text-light" href="history.php">History</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class='bx bxs-user-circle fs-1' style="margin-top: 0px"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="update.php">Setting</a></li>
+                        <li><a class="dropdown-item" href="update_user.php">Setting</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="../action/logout.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>

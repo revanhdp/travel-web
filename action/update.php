@@ -2,8 +2,11 @@
 session_start();
 include "../koneksi.php";
 
+#Set Waktu Ke Indonesia
+date_default_timezone_set('Asia/Jakarta');
+
 if (!isset($_SESSION['username'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -24,7 +27,7 @@ if (isset($_GET['id'])) {
         $stmt->bind_param('iisdi', $jumlah_tiket, $payment_method_id, $order_date, $total_harga, $order_id);
 
         if ($stmt->execute()) {
-            header('Location: ../history.php');
+            header('Location: ../page/history.php');
         } else {
             echo "Error: " . $conn->error;
         }
@@ -41,7 +44,7 @@ if (isset($_GET['id'])) {
     $payment_result = $conn->query($payment_sql);
     $payment_methods = $payment_result->fetch_all(MYSQLI_ASSOC);
 } else {
-    header('Location: ../history.php');
+    header('Location: ../page/history.php');
 }
 ?>
 
@@ -84,8 +87,7 @@ if (isset($_GET['id'])) {
                     <a class="nav-link text-light" href="#">Special Offer</a>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">History</a>
-                </li>
+                    <a class="nav-link text-light" href="#">History</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class='bx bxs-user-circle fs-1' style="margin-top: 0px"></i>
@@ -130,7 +132,7 @@ if (isset($_GET['id'])) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Apakah Anda yakin ingin memperbarui pesanan ini dengan total harga <span id="totalHarga"></span>?
+                    Apakah Anda yakin ingin memperbarui pesanan ini dengan total harga: <span id="totalHarga"></span>?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -149,8 +151,12 @@ if (isset($_GET['id'])) {
             const hargaPerTiket = <?php echo $order['harga']; ?>;
             const jumlahTiket = this.value;
             const totalHarga = hargaPerTiket * jumlahTiket;
-            document.getElementById('totalHarga').innerText = '$' + totalHarga;
+            document.getElementById('totalHarga').innerText = 'Rp. ' + totalHarga + 'Jt';
         });
+
+        const initialJumlahTiket = document.getElementById('jumlah_tiket').value;
+        const hargaPerTiket = <?php echo $order['harga']; ?>;
+        document.getElementById('totalHarga').innerText = 'Rp. ' + (initialJumlahTiket * hargaPerTiket) + 'Jt';
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

@@ -60,7 +60,7 @@ $result = $conn->query($sql);
                         <i class='bx bxs-user-circle fs-1'></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="update.php">Setting</a></li>
+                        <li><a class="dropdown-item" href="update_user.php">Setting</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
                     </ul>
@@ -76,7 +76,7 @@ $result = $conn->query($sql);
         </div>  
         <div class=" d-flex justify-content-center align-items-center flex-column" style="height: 65vh; width:100%">
             <p class="fs-1 text-light text-center" style="max-width: 600px; ">Access live travel updates ✈️, discussion forum 💬,currency converter 💵, and more... all on Travel+.</p>
-            <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="../destination/japan.php">Large button</a></button>
+            <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="../page/japan.php">Large button</a></button>
         </div>
     </div>
 

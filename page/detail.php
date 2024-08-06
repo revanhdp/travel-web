@@ -76,9 +76,9 @@ $payment_method = $payment_result->fetch_all(MYSQLI_ASSOC);
             <div class="col-md-6">
                 <h1><?php echo $card['judul']; ?></h1>
                 <p><?php echo $card['deskripsi']; ?></p>
-                <h5><?php echo "Harga Tiket ini yaitu $" . $card['harga']; ?></h5>
+                <h5><?php echo "Harga Tiket ini yaitu RP. " . $card['harga'] ."Jt"; ?></h5>
             </div>
-            <form id="paymentForm" method="POST" action="../pembayaran.php">
+            <form id="paymentForm" method="POST" action="../action/pembayaran.php">
                 <div class="mb-3">
                     <label for="jumlah_tiket" class="form-label">Jumlah Tiket</label>
                     <input type="number" class="form-control" name="jumlah_tiket" id="jumlah_tiket" required>
@@ -125,7 +125,7 @@ $payment_method = $payment_result->fetch_all(MYSQLI_ASSOC);
             var hargaTiket = <?php echo $card['harga']; ?>;
             var totalHarga = jumlahTiket * hargaTiket;
 
-            document.getElementById('modalBodyText').innerText = 'Total Harga: $' + totalHarga;
+            document.getElementById('modalBodyText').innerText = 'Total Harga: Rp. ' + totalHarga + 'Jt';
             var paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
             paymentModal.show();
         });

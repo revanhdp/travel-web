@@ -1,6 +1,7 @@
 <?php 
 session_start();
-include "koneksi.php";
+include "../koneksi.php";
+
 
 if (!isset($_SESSION['username'])) {
     header('Location: index.php');
@@ -32,49 +33,9 @@ $orders = $result->fetch_all(MYSQLI_ASSOC);
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="background">
-    <nav class="navbar navbar-expand-lg p-3 text-light d-flex justify-content-between fs-5" style="background-color: #41789F;">
-        <div class="container-fluid d-flex mx-5">
-            <a class="navbar-brand text-light" href="#">Navbar</a>
-        </div>
-        <div class="collapse navbar-collapse d-flex mx-5" id="navbarNav">
-            <ul class="navbar-nav d-flex mx-5" style="width: max-content;">
-                <li class=" mx-3">
-                    <a class="nav-link active text-light" aria-current="page" href="home/homepage.php">Home</a>
-                </li>
-                <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">Features</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        All Items
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../japan">Japan</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="../korea">Korea</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="../china">China</a></li>
-                    </ul>
-                </li>
-                <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">Special Offer</a>
-                </li>
-                <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">History</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class='bx bxs-user-circle fs-1' style="margin-top: 0px"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="update.php">Setting</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
+
+    <?php include "layout/navbar.php"; ?>
+
     <div class="container mt-5">
         <h1>History Pemesanan</h1>
         <div class="row">
@@ -85,12 +46,14 @@ $orders = $result->fetch_all(MYSQLI_ASSOC);
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $order['judul']; ?></h5>
                         <p class="card-text"><small class="text-muted">Jumlah Tiket: <?php echo $order['jumlah_tiket']; ?></small></p>
-                        <p class="card-text"><small class="text-muted">Total Harga: $<?php echo $order['total_harga']; ?></small></p>
+                        <p class="card-text"><small class="text-muted">Total Harga: Rp. <?php echo $order['total_harga']; ?>Jt</small></p>
                         <p class="card-text"><small class="text-muted">Waktu Dipesan: <?php echo $order['order_date']; ?></small></p>
                         <p class="card-text"><small class="text-muted">Metode Pembayaran: <?php echo $order['payment_method']; ?></small></p>
                         <p class="text-success">Lunas</p>
-                        <a href="action/update.php?id=<?php echo $order['id']; ?>" class="btn btn-primary">Update</a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $order['id']; ?>">Delete</button>
+                        <div class="d-flex justify-content-end align-items-end gap-1" >
+                            <a href="../action/update.php?id=<?php echo $order['id']; ?>" class="btn btn-primary"><i class='bx bx-edit-alt text-light' ></i></a>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $order['id']; ?>"><i class='bx bx-trash text-light' ></i></button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,6 @@
 session_start();
 include "../koneksi.php";
 
-
 $kategori = 'jepang';
 $sql = 'SELECT * FROM destination_cards WHERE kategori = ?';
 $stmt = $conn->prepare($sql);
@@ -91,7 +90,7 @@ if($result->num_rows > 0) {
             <p>Lorem ipsum dolor sit, ?</p>
         </div>
         <div>
-            <img src="japan-list.png" alt="">
+            <img class="mb-2" src="assets/japan_map.png" style="height: 150px; width: 150px" alt="jsabfjsabfdjb">
         </div>
     </div>
 
@@ -101,10 +100,7 @@ if($result->num_rows > 0) {
             <div class="card" style="width: 18rem;">
                 <img src="<?php echo $card['image_path']; ?>" class="card-img-top" style="height:200px" alt="...">
                 <div class="card-body d-flex flex-column">
-                    <div class="d-flex justify-content-between">
-                        <h5 class="card-title"><?php echo $card['judul'];?></h5>
-                        <p><strong>$<?php echo $card['harga']; ?></strong></p>
-                    </div>
+                    <h5 class="card-title"><?php echo $card['judul'];?></h5>
                     <p class="card-text"><?php echo $card['deskripsi']; ?></p>
                     <button type="button" class="btn btn-primary mt-auto">
                         <a class="text-light" style="text-decoration: none" href="detail.php?id=<?php echo $card['id']; ?>">Lihat Detail</a>
@@ -112,29 +108,6 @@ if($result->num_rows > 0) {
                 </div>
             </div>
         <!-- End Card -->
-
-
-        <!-- Modal -->
-            <div class="modal fade" id="exampleModal1<?php echo $card['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel1<?php echo $card['id']; ?>" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel1 <?php echo $card['id']; ?>">Modal title 1  <?php echo $card['id']; ?></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Fasilitas: 
-                            - Hotel Bintang 5 <br>
-                            - Makan    
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <!-- End Modal -->
         <?php endforeach; ?>
     </div>
 

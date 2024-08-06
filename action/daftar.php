@@ -1,5 +1,5 @@
 <?php 
-include "koneksi.php";
+include "../koneksi.php";
 session_start();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //cek apakah email sudah ada
     if (empty($username) || empty($email) || empty($password)){
         $_SESSION['error_message'] = "semua field harus diisi.";
-        header("Location: registrasi.php");
+        header("Location: ../registrasi.php");
         exit();
     }
 
@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if($result->num_rows > 0){
         $_SESSION['error_message'] = "Email sudah digunakan";
-        header("Location: registrasi.php");
+        header("Location: ../registrasi.php");
         exit();
     }
 
@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($stmt->execute()) {
         echo '<script>
             alert("Registrasi Berhasil");
-            window.location.href = "index.php"; 
+            window.location.href = "../index.php"; 
         </script>';
         exit();
     }

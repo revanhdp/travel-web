@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "koneksi.php";
+include "../koneksi.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['username'] = $row['username'];
 
-                header("Location: home/homepage.php");
+                header("Location: ../page/homepage.php");
                 exit();
             } else {
                 $_SESSION['error_message'] = "Password salah";
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['error_message'] = "Username / Password harus diisi";
     }
 
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>

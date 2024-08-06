@@ -1,3 +1,23 @@
+<?php 
+
+session_start();
+include "../koneksi.php";
+
+$kategori = 'china';
+$sql = 'SELECT * FROM destination_cards WHERE kategori = ?';
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('s', $kategori);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if($result->num_rows > 0){
+    $cards = $result->fetch_all(MYSQLI_ASSOC);
+} else{
+    $cards = [];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +27,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- <style>
-        body{
-            background-image: url("../homepage2.png");
-            background-repeat: no-repeat;
-            background-size: cover;   
-            background-position: center center;
-            background-attachment: fixed;
-        }
-    </style> -->
 </head>
 <body class="background">
     
@@ -23,90 +34,40 @@
 
     <div class="d-flex justify-content-between align-items-center" style="background-color: #41789F; padding: 0 300px 0 300px">
         <div style="max-width: 300px;">
-            <p class="fs-4 text-light">China</p>
-            <p>Lorem ipsum dolor sit, ?</p>
+            <li class="nav-item dropdown" style="list-style-type: none">
+                <a class="nav-link dropdown-toggle text-light fs-4 pt-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    China
+                </a>
+                <p>Lorem ipsum dolor sit </p>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="japan.php">Japan</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="korea.php">Korea</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="china.php">China</a></li>
+                </ul>
+            </li>
         </div>
         <div>
-            <img src="japan-list.png" alt="">
+            <img class="mb-2" src="assets/china-map.png" style="height: 150px; width: 150px" alt="">
         </div>
     </div>
 
-    <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center align-items-center" style="width: 80%; margin: auto">
-    <div class="card" style="width: 18rem;">
-            <img src="../home/assets/china.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Osaka</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">Go somewhere</button>
+    <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center" style="width: 80%; margin: auto">
+        <?php foreach ($cards as $card): ?>
+            <div class="card" style="width: 18rem;">
+                    <img src="<?php echo $card['image_path']; ?>" class="card-img-top" style="height:200px" alt="...">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><?php echo $card['judul']; ?></h5>
+                        <p class="card-text"><?php echo $card['deskripsi']; ?></p>
+                        <button type="button" class="btn btn-primary mt-auto" >
+                            <a class="text-light" style="text-decoration: none;" href="detail.php?id=<?php echo $card['id']; ?>">Pesan</a>
+                        </button>
+                    </div>
             </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="japan-list.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">Go somewhere</button>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="japan-list.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="japan-list.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="japan-list.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="japan-list.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
+        <?php endforeach; ?>   
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel1">Modal title 1</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Fasilitas: 
-                    - Hotel Bintang 5 <br>
-                    - Makan    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
     </div>
-    <!-- <div class=" d-flex justify-content-center align-items-center flex-column" style="height:90vh; width:100%">
-        <p class="fs-1 text-light text-center" style="max-width: 600px; ">Access live travel updates ✈️, discussion forum 💬,currency converter 💵, and more... all on Travel+.</p>
-        <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="">Large button</a></button>
-    </div> -->
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

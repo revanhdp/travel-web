@@ -15,7 +15,7 @@ if(isset($_GET['id'])){
     $stmt->bind_param('i', $order_id);
 
     if ($stmt->execute()){
-        header("Location: ../history.php");
+        header("Location: ../page/history.php");
     } else {
         echo "Error : " . $conn->error;
     }

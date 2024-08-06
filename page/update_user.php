@@ -47,6 +47,7 @@ $user = $result->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update User</title>
+    <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -77,9 +78,11 @@ $user = $result->fetch_assoc();
                     <input type="email" class="form-control" id="email" name="email" style="background-color: #EFEFEF" value="<?php echo htmlspecialchars($user['email']); ?>" required>
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label" style="font-weight: 600">New Password</label>
-                <input type="password" class="form-control" id="password" name="password" style="background-color: #EFEFEF" required>
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    <label for="password" class="form-label" style="font-weight: 600">New Password</label>
+                    <input type="password" class="form-control" id="password" name="password" style="background-color: #EFEFEF" required>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

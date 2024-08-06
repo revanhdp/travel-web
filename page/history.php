@@ -4,7 +4,7 @@ include "../koneksi.php";
 
 
 if (!isset($_SESSION['username'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -46,7 +46,15 @@ $orders = $result->fetch_all(MYSQLI_ASSOC);
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $order['judul']; ?></h5>
                         <p class="card-text"><small class="text-muted">Jumlah Tiket: <?php echo $order['jumlah_tiket']; ?></small></p>
-                        <p class="card-text"><small class="text-muted">Total Harga: Rp. <?php echo $order['total_harga']; ?>Jt</small></p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                Total Harga: Rp. 
+                                <?php 
+                                $harga_total = $order['total_harga'];
+                                echo number_format($harga_total, 0, ',', '.');
+                                ?>
+                            </small>
+                        </p>
                         <p class="card-text"><small class="text-muted">Waktu Dipesan: <?php echo $order['order_date']; ?></small></p>
                         <p class="card-text"><small class="text-muted">Metode Pembayaran: <?php echo $order['payment_method']; ?></small></p>
                         <p class="text-success">Lunas</p>
@@ -71,7 +79,7 @@ $orders = $result->fetch_all(MYSQLI_ASSOC);
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                            <a href="action/delete.php?id=<?php echo $order['id']; ?>" class="btn btn-danger">Hapus</a>
+                            <a href="../action/delete.php?id=<?php echo $order['id']; ?>" class="btn btn-danger">Hapus</a>
                         </div>
                     </div>
                 </div>

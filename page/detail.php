@@ -20,6 +20,9 @@ $card = $result->fetch_assoc();
 $payment_sql = 'SELECT * FROM payment_method';
 $payment_result = $conn->query($payment_sql);
 $payment_method = $payment_result->fetch_all(MYSQLI_ASSOC);
+
+$harga_asli = $card['harga'];
+$harga_diskon = $card['diskon'] ? $harga_asli * 0.8 : $harga_asli;
 ?>
 
 <!DOCTYPE html>
@@ -30,69 +33,45 @@ $payment_method = $payment_result->fetch_all(MYSQLI_ASSOC);
     <title>Detail Destinasi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="background">
-    <nav class="navbar navbar-expand-lg p-3 text-light d-flex justify-content-between fs-5" style="background-color: #41789F">
-        <div class="container-fluid d-flex mx-5">
-            <a class="navbar-brand text-light" href="#">Navbar</a>
-        </div>
-        <div class="collapse navbar-collapse d-flex mx-5" id="navbarNav">
-            <ul class="navbar-nav d-flex mx-5" style="width: max-content;">
-                <li class=" mx-3">
-                    <a class="nav-link active text-light" aria-current="page" href="../home/homepage.php">Home</a>
-                </li>
-                <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">Features</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        All Items
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../japan">Japan</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="../korea">Korea</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="../china">China</a></li>
-                    </ul>
-                </li>
-                <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">Special Offer</a>
-                </li>
-                <li class=" mx-3">
-                    <a class="nav-link text-light" href="../history.php">History</a>
-                </li>
-                <li class=" text-light mx-3">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+
+    <?php include "layout/navbar.php" ?>
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <img src="<?php echo $card['image_path']; ?>" class="img-fluid" alt="">
+                <img src="<?php echo $card['image_path']; ?>" class="img-fluid mb-5" alt="">
             </div>
             <div class="col-md-6">
                 <h1><?php echo $card['judul']; ?></h1>
                 <p><?php echo $card['deskripsi']; ?></p>
-                <h5><?php echo "Harga Tiket ini yaitu RP. " . $card['harga'] ."Jt"; ?></h5>
+                <h5>Harga Tiket ini yaitu Rp <?php echo number_format($harga_diskon, 0, ',', '.'); ?></h5>
+                <?php if ($card['diskon']) : ?>
+                    <p class="text-danger"><s>Rp <?php echo number_format($harga_asli, 0, ',', '.'); ?></s> (Diskon 20%)</p>
+                <?php endif; ?>
             </div>
             <form id="paymentForm" method="POST" action="../action/pembayaran.php">
-                <div class="mb-3">
-                    <label for="jumlah_tiket" class="form-label">Jumlah Tiket</label>
-                    <input type="number" class="form-control" name="jumlah_tiket" id="jumlah_tiket" required>
+                <div class="mb-3 row">
+                    <div class="col-md-6">
+                        <label for="jumlah_tiket" class="form-label">Jumlah Tiket</label>
+                        <input type="number" class="form-control" name="jumlah_tiket" id="jumlah_tiket" required>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="payment_method_id" class="form-label">Metode Pembayaran</label>
-                    <select class="form-control" name="payment_method_id" id="payment_method_id" required>
-                        <?php foreach ($payment_method as $method) : ?>
-                            <option value="<?php echo $method['id']; ?>"> <?php echo $method['name']; ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                <div class="mb-3 row">
+                    <div class="col-md-6">
+                        <label for="payment_method_id" class="form-label">Metode Pembayaran</label>
+                        <select class="form-control" name="payment_method_id" id="payment_method_id" required>
+                            <?php foreach ($payment_method as $method) : ?>
+                                <option value="<?php echo $method['id']; ?>"> <?php echo $method['name']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
                 <input type="hidden" name="destination_cards_id" value="<?php echo $card['id']; ?>">
-                <input type="hidden" name="total_harga" value="<?php echo $card['harga']; ?>">
+                <input type="hidden" name="total_harga" value="<?php echo $harga_diskon; ?>">
+                <input type="hidden" name="is_diskon" value="<?php echo $card['diskon']; ?>">
                 <button type="button" class="btn btn-primary" id="payButton">Bayar</button>
                 <button type="button" class="btn btn-secondary" onclick="history.back();">Kembali</button>
             </form>
@@ -122,10 +101,10 @@ $payment_method = $payment_result->fetch_all(MYSQLI_ASSOC);
     <script>
         document.getElementById('payButton').addEventListener('click', function() {
             var jumlahTiket = document.getElementById('jumlah_tiket').value;
-            var hargaTiket = <?php echo $card['harga']; ?>;
+            var hargaTiket = <?php echo $harga_diskon; ?>;
             var totalHarga = jumlahTiket * hargaTiket;
 
-            document.getElementById('modalBodyText').innerText = 'Total Harga: Rp. ' + totalHarga + 'Jt';
+            document.getElementById('modalBodyText').innerText = 'Total Harga: Rp ' + totalHarga.toLocaleString('id-ID');
             var paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
             paymentModal.show();
         });

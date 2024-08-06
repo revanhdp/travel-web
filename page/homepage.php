@@ -36,24 +36,24 @@ $result = $conn->query($sql);
 <body class="background" style="overflow-y: hidden">
     <nav class="navbar navbar-expand-lg bg-none p-3 text-light d-flex justify-content-between fs-5">
         <div class="container-fluid d-flex mx-5">
-            <a class="navbar-brand text-light" href="#">Navbar</a>
+            <a class="navbar-brand text-light fs-2" href="#">Travela</a>
         </div>
         <div class="collapse navbar-collapse d-flex mx-5" id="navbarNav">
             <ul class="navbar-nav d-flex mx-5" style="width: max-content;">
                 <li class=" mx-3">
-                    <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active text-light" aria-current="page" href="japan.php">Japan</a>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">Features</a>
+                    <a class="nav-link text-light" href="china.php">China</a>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">Pricing</a>
+                    <a class="nav-link text-light" href="korea.php">Korea</a>
                 </li>
                 <li class=" mx-3">
                     <a class="nav-link text-light" href="#">Special Offer</a>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="../history.php">History</a>
+                    <a class="nav-link text-light" href="history.php">History</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,7 +76,9 @@ $result = $conn->query($sql);
         </div>  
         <div class=" d-flex justify-content-center align-items-center flex-column" style="height: 65vh; width:100%">
             <p class="fs-1 text-light text-center" style="max-width: 600px; ">Access live travel updates ✈️, discussion forum 💬,currency converter 💵, and more... all on Travel+.</p>
-            <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="../page/japan.php">Large button</a></button>
+            <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="../page/japan.php">
+                Large button</a>
+            </button>
         </div>
     </div>
 

@@ -10,13 +10,13 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $message = "";
 
-// Update username and password
+// Update username, email, and password
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if (!empty($username) && !empty($password)) {
+    if (!empty($username) && !empty($email) && !empty($password)) {
         // Directly store the password without hashing (not recommended for production)
         $sql = "UPDATE user SET username = ?, email = ?, password = ? WHERE id = ?";
         $stmt = $conn->prepare($sql);
@@ -67,7 +67,7 @@ $user = $result->fetch_assoc();
                 window.location.href = "homepage.php";
             </script>
         <?php endif; ?>
-        <form action="" method="POST">
+        <form id="updateForm" action="" method="POST">
             <div class="row" style="">
                 <div class="col-md-6 mb-3">
                     <label for="username" class="form-label" style="font-weight: 600">New Username</label>
@@ -84,13 +84,34 @@ $user = $result->fetch_assoc();
                     <input type="password" class="form-control" id="password" name="password" style="background-color: #EFEFEF" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">Update</button>
         </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Confirm Update</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to update your profile?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirmUpdate">Yes, Update</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
+        document.getElementById('confirmUpdate').addEventListener('click', function() {
+            document.getElementById('updateForm').submit();
+        });
     </script>
 </body>
 </html>

@@ -2,7 +2,6 @@
 session_start();
 include "../koneksi.php";
 
-
 if (!isset($_SESSION['username'])) {
     header('Location: ../index.php');
     exit();
@@ -20,6 +19,9 @@ $stmt->bind_param('i', $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $orders = $result->fetch_all(MYSQLI_ASSOC);
+
+$special_offer_ids = [1, 15, 3, 4];
+$discount_rate = 0.20;
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +30,7 @@ $orders = $result->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History Pemesanan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -46,20 +48,16 @@ $orders = $result->fetch_all(MYSQLI_ASSOC);
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $order['judul']; ?></h5>
                         <p class="card-text"><small class="text-muted">Jumlah Tiket: <?php echo $order['jumlah_tiket']; ?></small></p>
-                        <p class="card-text">
-                            <small class="text-muted">
-                                Total Harga: Rp. 
-                                <?php 
-                                $harga_total = $order['total_harga'];
-                                echo number_format($harga_total, 0, ',', '.');
-                                ?>
-                            </small>
-                        </p>
+                        <?php 
+                        $display_price = in_array($order['destination_cards_id'], $special_offer_ids) ? 
+                                         $order['harga'] - ($order['harga'] * $discount_rate) : $order['harga'];
+                        ?>
+                        <p class="card-text"><small class="text-muted">Total Harga: Rp. <?php echo number_format($order['jumlah_tiket'] * $display_price, 2); ?></small></p>
                         <p class="card-text"><small class="text-muted">Waktu Dipesan: <?php echo $order['order_date']; ?></small></p>
                         <p class="card-text"><small class="text-muted">Metode Pembayaran: <?php echo $order['payment_method']; ?></small></p>
                         <p class="text-success">Lunas</p>
                         <div class="d-flex justify-content-end align-items-end gap-1" >
-                            <a href="../action/update.php?id=<?php echo $order['id']; ?>" class="btn btn-primary"><i class='bx bx-edit-alt text-light' ></i></a>
+                            <a href="update.php?id=<?php echo $order['id']; ?>" class="btn btn-primary"><i class='bx bx-edit-alt text-light' ></i></a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $order['id']; ?>"><i class='bx bx-trash text-light' ></i></button>
                         </div>
                     </div>
@@ -88,6 +86,6 @@ $orders = $result->fetch_all(MYSQLI_ASSOC);
             <?php endforeach; ?>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@ if(!isset($_SESSION['username'])) {
     exit();
 }
 
+
 $username = $_SESSION['username'];
 
 $sql = 'SELECT * FROM user';
@@ -25,35 +26,29 @@ $result = $conn->query($sql);
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         body{
-            background-image: url("../assets/homepage2.png");
             background-repeat: no-repeat;
             background-size: cover;   
             background-position: center center;
             background-attachment: fixed;
+            transition: background-image 1s ease-in-out;
         }
     </style>
 </head>
 <body class="background" style="overflow-y: hidden">
     <nav class="navbar navbar-expand-lg bg-none p-3 text-light d-flex justify-content-between fs-5">
         <div class="container-fluid d-flex mx-5">
-            <a class="navbar-brand text-light fs-2" href="#">Travela</a>
+            <a class="navbar-brand text-light fs-2" href="homepage.php">Travela</a>
         </div>
         <div class="collapse navbar-collapse d-flex mx-5" id="navbarNav">
             <ul class="navbar-nav d-flex mx-5" style="width: max-content;">
                 <li class=" mx-3">
-                    <a class="nav-link active text-light" aria-current="page" href="japan.php">Japan</a>
+                    <a class="nav-link text-light" href="special_offer.php">Special Offer</a>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="china.php">China</a>
+                    <a class="nav-link text-light" href="history.php">My Trip</a>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="korea.php">Korea</a>
-                </li>
-                <li class=" mx-3">
-                    <a class="nav-link text-light" href="#">Special Offer</a>
-                </li>
-                <li class=" mx-3">
-                    <a class="nav-link text-light" href="history.php">History</a>
+                    <a class="nav-link text-light" href="https://wa.me/+6285887510981">Contact</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,7 +57,7 @@ $result = $conn->query($sql);
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="update_user.php">Setting</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+                        <li><a class="dropdown-item text-danger" id="logout-link" href="#">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -75,15 +70,49 @@ $result = $conn->query($sql);
             <p class="fs-1 text-light"> <?php echo ($username); ?></p>
         </div>  
         <div class=" d-flex justify-content-center align-items-center flex-column" style="height: 65vh; width:100%">
-            <p class="fs-1 text-light text-center" style="max-width: 600px; ">Access live travel updates ✈️, discussion forum 💬,currency converter 💵, and more... all on Travel+.</p>
-            <button type="button" class="btn btn-primary btn-lg"><a class="text-light" href="../page/japan.php">
-                Large button</a>
-            </button>
+            <p class="fs-1 text-light text-center" style="max-width: 600px; ">Discover the wonders of East Asia with Travela. and explore exclusive deals for Japan, China, and Korea. Start your adventure with us today!.</p>
+            <div class="d-flex justify-content-center align-items-center gap-2">
+                <button type="button" class="btn btn-lg" style="background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px) ;border-radius: 8px;"><a class="text-light" href="china.php" style="text-decoration: none">
+                    China</a>
+                </button>
+                <button type="button" class="btn btn-lg" style="background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px) ;border-radius: 8px;"><a class="text-light" href="japan.php" style="text-decoration: none">
+                    Japan</a>
+                </button>
+                <button type="button" class="btn btn-lg" style="background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px) ;border-radius: 8px;"><a class="text-light" href="korea.php" style="text-decoration: none">
+                    Korea</a>
+                </button>
+            </div>
         </div>
     </div>
 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const backgrounds = [
+            "assets/bg-china.jpg",
+            "assets/bg-korea.jpg",
+            "assets/bg-japan.jpg"
+        ];
+
+        let currentIndex = 0;
+
+        function changeBackground(){
+            currentIndex = (currentIndex + 1) % backgrounds.length;
+            document.body.style.backgroundImage = `url(${backgrounds[currentIndex]})`;
+        }
+
+        setInterval(changeBackground, 3000);
+
+        document.body.style.backgroundImage = `url(${backgrounds[0]})`;
+
+        document.getElementById('logout-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm('Yakin mau Logout?')) {
+                window.location.href = '../action/logout.php';
+            }
+        });
+    </script>
+
 </body>
 </html>

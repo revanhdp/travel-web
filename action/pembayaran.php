@@ -7,29 +7,28 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $user_id = $_SESSION['user_id'];
-    $destination_cards_id = $_POST['destination_cards_id'];
-    $jumlah_tiket = (int)$_POST['jumlah_tiket'];
-    $payment_method_id = (int)$_POST['payment_method_id'];
-    $harga_tiket = (int)$_POST['total_harga'];
-    $total_harga = $jumlah_tiket * $harga_tiket;
+$user_id = $_SESSION['user_id'];
+$destination_cards_id = $_POST['destination_cards_id'];
+$jumlah_tiket = $_POST['jumlah_tiket'];
+$payment_method_id = $_POST['payment_method_id'];
 
-    $sql = "INSERT INTO orders (user_id, destination_cards_id, jumlah_tiket, payment_method_id, total_harga) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('iiiii', $user_id, $destination_cards_id, $jumlah_tiket, $payment_method_id, $total_harga);
+$sql = 'SELECT harga FROM destination_cards WHERE id = ?';
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $destination_cards_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$card = $result->fetch_assoc();
 
-    if ($stmt->execute()) {
-        header('Location: ../page/history.php');
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+$special_offer_ids = [1, 15, 3, 17];
+$discount_rate = 0.20;
+$price = in_array($destination_cards_id, $special_offer_ids) ? $card['harga'] - ($card['harga'] * $discount_rate) : $card['harga'];
 
-    $stmt->close();
-    $conn->close();
-} else {
-    header('Location: ../page/homepage.php');
-    exit();
-}
+$total_harga = $price * $jumlah_tiket;
+
+$sql = "INSERT INTO orders (user_id, destination_cards_id, jumlah_tiket, total_harga, payment_method_id, order_date) VALUES (?, ?, ?, ?, ?, NOW())";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('iiidi', $user_id, $destination_cards_id, $jumlah_tiket, $total_harga, $payment_method_id);
+$stmt->execute();
+
+header('Location: ../page/history.php');
 ?>

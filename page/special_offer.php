@@ -49,7 +49,7 @@ $cards = $result->fetch_all(MYSQLI_ASSOC);
                     <?php 
                     $discounted_price = $card['harga'] - ($card['harga'] * $discount_rate);
                         ?>
-                    <h5 class="card-text text-danger mt-auto">Special Price: <br>Rp. <?php echo number_format($discounted_price, 2); ?></h5>
+                    <!-- <h5 class="card-text text-danger mt-auto">Special Price: <br>Rp. <?php echo number_format($discounted_price, 2); ?></h5> -->
                     <button type="button" class="btn mt-auto bg-dark">
                         <a class="text-light " style="text-decoration: none" href="detail.php?id=<?php echo $card['id']; ?>&special_offer=1">Pesan</a>
                     </button>

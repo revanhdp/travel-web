@@ -45,7 +45,7 @@ $result = $conn->query($sql);
                     <a class="nav-link text-light" href="special_offer.php">Special Offer</a>
                 </li>
                 <li class=" mx-3">
-                    <a class="nav-link text-light" href="history.php">My Trip</a>
+                    <a class="nav-link text-light" href="history.php">Booking</a>
                 </li>
                 <li class=" mx-3">
                     <a class="nav-link text-light" href="https://wa.me/+6285887510981">Contact</a>

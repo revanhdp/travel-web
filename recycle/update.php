@@ -58,22 +58,7 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="../style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-        .center-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 90vh;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
 
-        .form-box {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 500px;
-        }
     </style>
 </head>
 <body class="background">

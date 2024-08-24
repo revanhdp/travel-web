@@ -12,14 +12,15 @@ $user_id = $_SESSION['user_id'];
 $destination_cards_id = $_POST['destination_cards_id'];
 $jumlah_tiket = $_POST['jumlah_tiket'];
 $opsi_trip_ids = $_POST['opsi_trip_ids']; // Menyimpan opsi trip yang dipilih
+$order_date = $_POST['order_date'];
 $total_harga = $_POST['total_harga'];
 $payment_method_id = $_POST['payment_method_id'];
 
 // Insert order ke database
 $order_sql = "INSERT INTO orders (user_id, destination_cards_id, jumlah_tiket, opsi_trip_ids, total_harga, order_date, payment_method_id) 
-VALUES (?, ?, ?, ?, ?, NOW(), ?)";
+VALUES (?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($order_sql);
-$stmt->bind_param('iiiisi', $user_id, $destination_cards_id, $jumlah_tiket, $opsi_trip_ids, $total_harga, $payment_method_id);
+$stmt->bind_param('iiiissi', $user_id, $destination_cards_id, $jumlah_tiket, $opsi_trip_ids, $total_harga, $order_date, $payment_method_id);
 $stmt->execute();
 
 if ($stmt->affected_rows > 0) {

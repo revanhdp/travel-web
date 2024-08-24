@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         exit();
     }
 
-    //insert pengguna baru dari database
+    //insert user baru dari database
     $email_check_sql = "SELECT * FROM user WHERE email = ?";
     $stmt = $conn->prepare($email_check_sql);
     $stmt->bind_param("s", $email);

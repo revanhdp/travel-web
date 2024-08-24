@@ -34,10 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $opsi_ids = isset($_POST['opsi_trip']) ? implode(',', $_POST['opsi_trip']) : '';
     $total_harga = $_POST['total_harga'];
     $payment_method_id = $_POST['payment_method_id'];
+    $order_date = $_POST['order_date'];
 
-    $update_sql = "UPDATE orders SET jumlah_tiket = ?, opsi_trip_ids = ?, total_harga = ?, payment_method_id = ? WHERE id = ?";
+    $update_sql = "UPDATE orders SET jumlah_tiket = ?, opsi_trip_ids = ?, total_harga = ?, payment_method_id = ?, order_date = ? WHERE id = ?";
     $stmt = $conn->prepare($update_sql);
-    $stmt->bind_param('issii', $jumlah_tiket, $opsi_ids, $total_harga, $payment_method_id, $order_id);
+    $stmt->bind_param('issisi', $jumlah_tiket, $opsi_ids, $total_harga, $payment_method_id, $order_date, $order_id);
     $stmt->execute();
 
     header('Location: history.php');
@@ -87,6 +88,10 @@ $payment_methods = $conn->query($payment_sql)->fetch_all(MYSQLI_ASSOC);
                         <option value="<?php echo $method['id']; ?>" <?php echo $method['id'] == $order['payment_method_id'] ? 'selected' : ''; ?>><?php echo htmlspecialchars($method['name']); ?></option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="order_date">Tanggal Pesanan</label>
+                <input type="date" name="order_date" class="form-control" id="order_date" value="<?php echo htmlspecialchars($order['order_date']); ?>" required>
             </div>
 
 

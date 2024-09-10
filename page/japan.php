@@ -40,7 +40,7 @@ if($result->num_rows > 0) {
                 Japan
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="japan.php">Japan</a></li>
+                <li><a class="dropdown-item" href="all_destination.php">All Destination</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="korea.php">Korea</a></li>
                 <li><hr class="dropdown-divider"></li>

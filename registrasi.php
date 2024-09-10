@@ -10,9 +10,9 @@
 <body>
     <div class=" min-vh-100 d-flex justify-content-center align-items-center " style="background-color: #F8EDED ">
         <div class="row w-100 bg-none" style="min-height: 100vh;">
-            <div class="col-5 d-flex flex-column justify-content-center align-items-center p-0 position-relative" style="background-color: #A5DDEA">
+            <div class="col-5 d-flex flex-column justify-content-center align-items-center p-0 position-relative bg-dark">
                 <div>
-                    <p class="fs-1 position-absolute" style="left: 10px; top: 10px">Travela</p>
+                    <p class="fs-1 position-absolute text-light" style="left: 10px; top: 10px">Travela</p>
                 </div>
                 <img class="mt-5 pt-5" src="assets/regis.png" alt="">
                 

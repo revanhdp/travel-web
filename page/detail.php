@@ -159,7 +159,7 @@ $payment_methods = $payment_result->fetch_all(MYSQLI_ASSOC);
                 </div>
                 <div class="modal-body">
                     <p id="modalBodyText"></p>
-                    <p ></p>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -213,11 +213,12 @@ $payment_methods = $payment_result->fetch_all(MYSQLI_ASSOC);
         document.getElementById('opsi_trip_ids').value = selectedOpsiTripIds.join(',');
 
         var modalBodyText = `
-            Jumlah Tiket = ${jumlahTiket} <br>
-            Waktu Penerbangan = ${orderDate} <br>
-            Opsi Trip = ${selectedOpsiTripNames.join(', ')} <br>
-            Metode Pembayaran = ${paymentMethod} <br>
-            Total Harga = ${formatRupiah(totalHarga, 'Rp.') }
+            Jumlah Tiket : ${jumlahTiket} <br>
+            Waktu Penerbangan : ${orderDate} <br>
+            Opsi Trip : ${selectedOpsiTripNames.join(', ')} <br>
+            Metode Pembayaran : ${paymentMethod} <br>
+            Total Harga : ${formatRupiah(totalHarga, 'Rp.') }
+
 
         `;
         document.getElementById('modalBodyText').innerHTML = modalBodyText;

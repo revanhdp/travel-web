@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     if (!empty($username) && !empty($email) && !empty($password)) {
-        // Directly store the password without hashing (not recommended for production)
+
         $sql = "UPDATE user SET username = ?, email = ?, password = ? WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('sssi', $username, $email, $password, $user_id);

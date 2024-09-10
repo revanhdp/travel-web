@@ -65,21 +65,20 @@ $result = $conn->query($sql);
     </nav>
 
     <div style="height: 85vh;">
-        <div class="text-light" style="background-color: rgba(255,255,255,0.3);max-width: 20%; backdrop-filter: blur(10px) ; margin: 3% 0 0 5%; border-radius: 8px;">
-            <p class="fs-2 text-light ">Welcome Back, </p>
-            <p class="fs-1 text-light"> <?php echo ($username); ?></p>
-        </div>  
+        <div class="d-flex justify-content-between">
+            <div class="text-light" style="background-color: rgba(255,255,255,0.3);max-width: 20%; backdrop-filter: blur(10px) ; margin: 3% 0 0 5%; border-radius: 8px;">
+                <p class="fs-2 text-light ">Welcome Back, </p>
+                <p class="fs-1 text-light"> <?php echo ($username); ?></p>
+            </div>  
+            <div class="text-light" style="margin: 3% 5% 0 0">
+                <p class="fs-2" style="background-color: rgba(255,255,255,0.3);max-width: 30% backdrop-filter: blur(10px); border-radius: 8px;"><?php echo date("Y/m/d"); ?></p>
+            </div>
+        </div>
         <div class=" d-flex justify-content-center align-items-center flex-column" style="height: 65vh; width:100%">
             <p class="fs-1 text-light text-center" style="max-width: 600px; ">Discover the wonders of East Asia with Travela. and explore exclusive deals for Japan, China, and Korea. Start your adventure with us today!.</p>
             <div class="d-flex justify-content-center align-items-center gap-2">
-                <button type="button" class="btn btn-lg" style="background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px) ;border-radius: 8px;"><a class="text-light" href="china.php" style="text-decoration: none">
-                    China</a>
-                </button>
-                <button type="button" class="btn btn-lg" style="background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px) ;border-radius: 8px;"><a class="text-light" href="japan.php" style="text-decoration: none">
-                    Japan</a>
-                </button>
-                <button type="button" class="btn btn-lg" style="background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px) ;border-radius: 8px;"><a class="text-light" href="korea.php" style="text-decoration: none">
-                    Korea</a>
+                <button type="button" class="btn btn-lg" style="background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px) ;border-radius: 8px;"><a class="text-light" href="all_destination.php" style="text-decoration: none">
+                    Check All Destination</a>
                 </button>
             </div>
         </div>

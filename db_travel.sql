@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2024 at 06:04 PM
+-- Generation Time: Sep 10, 2024 at 08:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,88 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_travel`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about`
+--
+
+CREATE TABLE `about` (
+  `id` int(11) NOT NULL,
+  `destination_cards_id` int(11) NOT NULL,
+  `img_path` varchar(400) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `about`
+--
+
+INSERT INTO `about` (`id`, `destination_cards_id`, `img_path`) VALUES
+(1, 25, 'https://1.bp.blogspot.com/-ZwyubnTMDuc/ULZeybQcnCI/AAAAAAAALcI/Vdpxxrp_5dY/s1600/china+wall+(3).jpg'),
+(2, 25, 'https://hdwallpaperim.com/wp-content/uploads/2017/08/27/143174-Great_Wall_of_China.jpg'),
+(3, 25, 'https://cdn.britannica.com/54/122154-050-4DA0F697/Great-Wall-of-China.jpg'),
+(4, 25, 'https://getwallpapers.com/wallpaper/full/5/d/a/1120472-amazing-the-great-wall-of-china-wallpaper-2560x1544-pc.jpg'),
+(6, 26, 'https://i.pinimg.com/originals/92/de/64/92de645ea2bc848ef184b42ef78dbf83.jpg'),
+(7, 26, 'https://www.tripsavvy.com/thmb/aCiBu1D-Kr3-P90I6QmvPaJJ4SI=/2121x1414/filters:fill(auto,1)/chinese-temple-and-forbidden-city-in-a-day-636217080-f9f58e9618db4409b22733fcf9591901.jpg'),
+(10, 26, 'https://cdn.theworldofchinese.com/media/images/VCG111406876481.original.jpg'),
+(11, 27, 'https://th.bing.com/th/id/R.fa7db323b6c5610d391d5e4fb90537b6?rik=G6XmpEe%2fdE1KdA&riu=http%3a%2f%2fwww.eyesonlife.org%2fArticles%2fCountry%2fChina%2fImages%2fterracotta_army-007.jpg&ehk=LJ4Gyob0q8dfMEWDWqaoOwY5EhFS%2bwAwqezOIFRDLVs%3d&risl=&pid=ImgRaw&r=0'),
+(12, 27, 'https://live-production.wcms.abc-cdn.net.au/9e0a5acd2e42f3aeca290c5e62034134?impolicy=wcms_crop_resize&cropH=999&cropW=1500&xPos=0&yPos=128&width=862&height=575'),
+(13, 27, 'https://www.archaeology.wiki/wp-content/uploads/2022/03/Terracotta_army_1.jpg'),
+(14, 28, 'https://www.pixel4k.com/wp-content/uploads/2020/08/the-bund-waterfront-shanghai_1596916650.jpg'),
+(15, 28, 'https://www.terragalleria.com/images/gallery/china/chin66623.large.jpeg'),
+(16, 28, 'https://bestcityscape.com/wp-content/uploads/2018/11/DJICN18_005038.jpg'),
+(17, 29, 'https://studycli.org/wp-content/uploads/2020/04/li-river-jiumahuashan-karst-mountains-guilin-landscape-02.jpg'),
+(18, 29, 'https://www.easytourchina.com/images/Photo/yangshuo/p7_d20151019152411.jpg'),
+(19, 29, 'https://cdn.britannica.com/48/94448-050-90D2325E/Li-River-China.jpg'),
+(20, 1, 'https://1.bp.blogspot.com/-xgkzA1v3IW4/X1FtmWqFLII/AAAAAAAAEwU/hFTCs_l7hx4I2xqKvhijsFE-DXPxVEmdQCLcBGAsYHQ/s2048/Osaka_Castle_Japan.jpg'),
+(21, 1, 'https://th.bing.com/th/id/R.e4a2f8a866cb3d369570ab2f255d0988?rik=JwIxssLz%2bVHR%2bw&riu=http%3a%2f%2fwww.kanpai-japan.com%2fsites%2fdefault%2ffiles%2fuploads%2f2012%2f05%2fosaka-castle-5.jpg&ehk=Wln%2b6RPh%2bsme8kKAaS9RqvcD%2fvI2J4xvDKla7%2fjWzA8%3d&risl=&pid=ImgRaw&r=0'),
+(22, 1, 'https://th.bing.com/th/id/R.f10a33c4e79d060f339601f87ed07831?rik=vWQSQ6e%2bG%2b%2byvA&riu=http%3a%2f%2finspirationseek.com%2fwp-content%2fuploads%2f2014%2f09%2fOsaka-Castle-Pictures-Wallpaper1.jpg&ehk=8T3lbjjzoR7zo65b6RV4KjpVXZ8L6f%2bBVnkTp0tlSvs%3d&risl=&pid=ImgRaw&r=0'),
+(23, 1, 'https://live.staticflickr.com/65535/50335987562_337058b37c_b.jpg'),
+(24, 2, 'https://th.bing.com/th/id/R.57898fbfbb9f3acfb65af42c4021a753?rik=iUTRXy6Bm%2bEdpA&riu=http%3a%2f%2fwww.tdrfan.com%2ftds%2fmysterious_island%2f20000_leagues_under_the_sea%2fgallery%2f20000_leagues_under_the_sea_006.jpg&ehk=UI1DS%2bJz1DdF2XKUPEnBKsSmnx1VohVko0PRsw0gTn0%3d&risl=&pid=ImgRaw&r=0'),
+(25, 2, 'https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/6/2016/06/Tokyo-DisneySea-Flickr.jpg'),
+(26, 2, 'https://imgcp.aacdn.jp/img-a/1200/900/global-aaj-front/article/2016/08/57af0f933ed63_57af0c1dd6cc1_104386731.jpg'),
+(27, 2, 'https://th.bing.com/th/id/R.5de5242c87e594b7e48661c36bd4b312?rik=TIV5E%2fJproyqMA&riu=http%3a%2f%2fstatic1.squarespace.com%2fstatic%2f57b72100e4fcb5e4aef2f4c4%2ft%2f63b681af9df1ef58f0dc3a4e%2f1674114553982%2fTokyo-DisneySea-Hotel-Miracosta-Balcony-View-by-Joshua-Meyer.jpeg%3fformat%3d1500w&ehk=4iXnzhDFASPwrjiaUMuDlfUcyb%2fZSpt%2bI%2bVpnzA9ihQ%3d&risl=&pid=ImgRaw&r=0'),
+(28, 3, 'https://media.istockphoto.com/photos/nijo-castle-in-kyoto-picture-id474932712?k=20&m=474932712&s=612x612&w=0&h=bK6F-JrFPresUwipdOeJsAYEcsYPdlFy93v2kA39x0Q='),
+(29, 3, 'https://www.infojepang.net/wp-content/uploads/Interior-dan-lukisan-di-dalam-Istana-Nijo-1024x1024.jpg'),
+(30, 3, 'https://4.bp.blogspot.com/-vwvFqSUvtMg/TxwFbRM6WQI/AAAAAAAABDg/suxSnMIuXt8/s1600/SAM_1678.JPG'),
+(31, 4, 'https://jepang-indonesia.co.id/wp-content/uploads/2023/01/sensoji-temple-1.jpg'),
+(32, 4, 'https://cdn.idntimes.com/content-images/community/2021/08/fromandroid-f313e1058f9c434d3120b714106367b4.jpg'),
+(33, 4, 'https://www.blazetrip.com/wp-content/uploads/2019/12/tokyo-sensoji-temple-overview.jpg'),
+(34, 4, 'https://www.gotravelly.com/assets/img/review/gallery/1710/4e6a985a1da1d4db8ae57f3cd614c5cf.jpg'),
+(35, 5, 'https://th.bing.com/th/id/OIP.8pO6x_aDTdXiyTazQuaukwHaJQ?rs=1&pid=ImgDetMain'),
+(36, 5, 'https://lh4.googleusercontent.com/proxy/xonLwKPqzC_OgD8BH7f8DchGyFAU2mFMrR3nWEz5I0tL6uYeyZhwERX5sy1CGvzMEZyGe34xcgpjwiqbWFN2PYw4-7BkKP2_AizWILn62saYPMl7eVF3xQ=s0-d'),
+(37, 6, 'https://www.tripsavvy.com/thmb/Zk_fxIIF92UIfujOk5lMOj9YS0M=/3936x2624/filters:fill(auto,1)/DSC_6146-5ed42cc667dc4defb4f489d681f4036b.jpg'),
+(38, 6, 'https://external-preview.redd.it/uibxGaszB41-5CizB5l0X6ozuZrhYiY7wC6DwkMwsco.jpg?auto=webp&s=c2d129bfe6c8a31cb72ac3b320d05a8f8e1ed788'),
+(39, 6, 'https://www.monikasalzmann.com/wp-content/uploads/2020/01/Fushimi-Inari-Taisha-kyoto.jpg'),
+(40, 6, 'https://thumbs.dreamstime.com/b/inari-japan-nov-thousands-torii-form-sort-gallery-fushimi-inari-taisha-shrine-inscriptions-fushimi-inari-taisha-111037368.jpg'),
+(41, 7, 'https://itsyourjapan.com/wp-content/uploads/2018/11/When-are-the-best-days-to-visit-the-park-Universal-Studios-Japan-Tips-1024x597.jpg'),
+(42, 7, 'https://c1.staticflickr.com/3/2219/2270953711_0a41a16cc6_b.jpg'),
+(43, 7, 'https://th.bing.com/th/id/R.03c5c04a03228818d25ebae29d4a110e?rik=lQ7Mtg6kzqmSDw&riu=http%3a%2f%2fwww.travelcaffeine.com%2fwp-content%2fuploads%2f2016%2f03%2funiversal-studios-japan-osaka-trip-071.jpg&ehk=jfD1xNxwsy3OsHgZJTH3Eut6aQp5O7IiD5tcrbExj1M%3d&risl=&pid=ImgRaw&r=0'),
+(44, 7, 'https://1.bp.blogspot.com/-yf1Wwz0Veho/ThJAnU_RvrI/AAAAAAAAAK4/S0s9Utelq3w/s1600/DSC04596.JPG'),
+(45, 8, 'https://i.pinimg.com/originals/c8/23/17/c823172587b4b1003f8224eb1ff881a7.jpg'),
+(46, 8, 'https://www.pcclean.io/wp-content/gallery/mount-fuji-hd-wallpapers/Mount-Fuji-21.jpg'),
+(47, 10, 'https://cdn.getyourguide.com/img/location/5b45cac29bcf1.jpeg/88.jpg'),
+(48, 10, 'https://1.bp.blogspot.com/-f4oTpZDYvdM/TrukMAT-oGI/AAAAAAAAAU4/U8b8FxZNMpE/s1600/seoul-tower-aerial-view.jpg'),
+(49, 11, 'https://thumbs.dreamstime.com/b/gallery-gyeongbokgung-palace-grounds-seoul-south-korea-39316007.jpg'),
+(50, 11, 'https://thisiskoreatours.com/wp-content/uploads/2017/03/Gyeongbokgung-Palace.jpg'),
+(51, 11, 'https://a.cdn-hotels.com/gdcs/production87/d1597/ecdd89f2-79d4-46a1-b474-6f132ffdc2d1.jpg'),
+(52, 12, 'https://toucanslandmarks.s3.amazonaws.com/media/com_scatalog/images/listings/o/2020073018573523752.jpg'),
+(53, 12, 'https://i.pinimg.com/originals/cd/c5/ff/cdc5ff1bac3dd595c7e75e760da09212.jpg'),
+(54, 12, 'https://www.tripsavvy.com/thmb/ie3EIwNbr5w3CNjwxeBQnRRWSqo=/2119x1414/filters:fill(auto,1)/GettyImages-1075844336-9cbbdc598d8b44518f55cd24610cf3d9.jpg'),
+(55, 14, 'https://th.bing.com/th/id/R.4e600a05f4725de6d3eff95d05c10987?rik=AQ2sHx41aCn%2bEg&riu=http%3a%2f%2fassets.fodors.com%2fdestinations%2f710812%2fpath-seongsan-ilchulbong-jeju-island-south-korea_980x650.jpg&ehk=9NyVssxuEADMV0%2fJTZ8xG%2bxx7XeNX87HFzzUPnVHomA%3d&risl=&pid=ImgRaw&r=0'),
+(56, 14, 'https://th.bing.com/th/id/R.6e6911cf18c920fc8982a9c14ab3ef71?rik=hH0g1zQPvaJp%2fw&riu=http%3a%2f%2fwww.erichevesyphotography.com%2fwp-content%2fuploads%2f2015%2f12%2fTop-Jeju-Island-Photos-2015-12-of-19.jpg&ehk=95ZlETTfF1nz6zMfI6zFI7hk6rcKz53IY1lrRUyUZxk%3d&risl=&pid=ImgRaw&r=0'),
+(57, 14, 'https://th.bing.com/th/id/R.234bc87717e468df38fb42f26c1475fc?rik=JZWsCvFP8esErA&riu=http%3a%2f%2fassets.fodors.com%2fdestinations%2f710812%2fjeongbang-waterfall-jeju-island-south-korea_980x650.jpg&ehk=r6rk%2fRiCGNPURVMoeHftFt%2f9WlXSf9al8eOhylEAZUc%3d&risl=&pid=ImgRaw&r=0'),
+(58, 15, 'https://www.thehiddenthimble.com/wp-content/uploads/2012/11/lotteworld17-1024x768.jpg'),
+(59, 15, 'https://cdn-imgix.headout.com/tour/19742/TOUR-IMAGE/5352fe14-ad34-43e3-aaf2-290a4dd4840c-10592-seoul-lotte-world-theme-park-ticket-01.jpg'),
+(60, 15, 'https://3.bp.blogspot.com/-1E1Ab5PJUFI/WhQWwpKsM0I/AAAAAAAAAcw/nwX6deaF-TANg6fZ8gZ-45Avu4KwPYipwCLcBGAs/s1600/maxresdefault.jpg'),
+(61, 15, 'https://th.bing.com/th/id/R.1da2545660dd513793ac7d21a6531e1f?rik=QgxaKSQC9SeBhQ&riu=http%3a%2f%2fdivui.com%2fblog%2fwp-content%2fuploads%2f2018%2f04%2fLotte-World-2.jpg&ehk=7PWLHA6GnPeQ9aYc%2b75IpQqSUh7tbhXoZfFEn%2fy%2fWA8%3d&risl=&pid=ImgRaw&r=0'),
+(62, 17, 'https://wallpapercave.com/wp/wp7545684.jpg'),
+(63, 17, 'https://www.ivisitkorea.com/wp-content/uploads/nami-island-on-Autumn.jpg'),
+(64, 24, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/d1/56/53/coex-aquarium.jpg?w=1200&h=1200&s=1'),
+(65, 24, 'https://media-cdn.tripadvisor.com/media/photo-s/16/f4/bf/2a/coex-aquarium.jpg'),
+(66, 30, 'https://th.bing.com/th/id/R.f08f0330c2d8e34fcc65600c24205241?rik=mqkl%2bMj4%2fPEY7Q&riu=http%3a%2f%2fwww.jics.co.kr%2fdata%2feditor%2f1905%2fthumb-bb84958701e2e0d1c8521189a27ecefb_1557919666_8508_750x563.jpg&ehk=1UVjHX7ktMMCwG9YHGCF4%2f6ya2chWOBLo%2fggka7LtEA%3d&risl=&pid=ImgRaw&r=0'),
+(67, 30, 'https://d3rr2gvhjw0wwy.cloudfront.net/uploads/activity_galleries/53046/2000x2000-0-70-5b47cfcbea16eb11136dee366826c341.jpg');
 
 -- --------------------------------------------------------
 
@@ -187,20 +269,19 @@ INSERT INTO `orders` (`id`, `user_id`, `destination_cards_id`, `jumlah_tiket`, `
 (27, 3, 2, 4, 48, '2024-08-06 14:20:43', 3, NULL),
 (30, 3, 24, 1, 760000, '2024-08-06 17:16:05', 1, NULL),
 (46, 12, 15, 6, 3000000, '2024-08-07 08:57:37', 1, NULL),
-(54, 11, 2, 2, 8800000, '2024-08-09 03:40:23', 3, '4,5,6'),
-(55, 11, 3, 2, 4500000, '2024-08-09 03:48:23', 2, '7'),
-(57, 11, 26, 1, 7050000, '2024-08-09 04:20:45', 3, '1,2,3'),
-(58, 11, 14, 1, 5000000, '2024-08-09 06:28:33', 2, '34,36'),
-(59, 11, 1, 2, 8000000, '2024-08-09 06:47:40', 2, '1'),
-(60, 11, 2, 1, 3800000, '2024-08-09 06:53:14', 2, '4,6'),
-(61, 11, 11, 3, 15900000, '2024-08-09 07:47:07', 2, '28,29,30'),
-(62, 11, 11, 3, 15900000, '2024-08-09 07:47:24', 1, '28'),
-(63, 11, 2, 1, 4400000, '2024-08-09 07:57:41', 2, '4'),
-(64, 11, 1, 2, 8000000, '2024-08-09 08:07:48', 1, '1'),
-(65, 11, 25, 3, 20400000, '2024-08-09 08:16:57', 3, '46,47,48'),
+(65, 11, 25, 1, 1000000, '0000-00-00 00:00:00', 3, '47'),
 (66, 13, 2, 3, 6600000, '2024-08-09 08:31:34', 2, '4'),
 (67, 13, 3, 3, 6750000, '2024-08-09 08:31:50', 3, '7,8'),
-(68, 11, 25, 2, 13600000, '2024-08-09 08:58:35', 1, '46,47,48');
+(74, 11, 11, 4, 21200000, '0000-00-00 00:00:00', 2, '28,29,30'),
+(79, 11, 3, 3, 13650000, '2024-08-27 17:00:00', 2, '7,8,9'),
+(80, 11, 2, 4, 17600000, '0000-00-00 00:00:00', 2, '4,5,6'),
+(82, 11, 3, 6, 10200000, '0000-00-00 00:00:00', 3, '7'),
+(84, 15, 3, 3, 13650000, '2024-09-18 17:00:00', 2, '7'),
+(85, 15, 4, 3, 11850000, '2024-08-27 17:00:00', 3, '1'),
+(86, 15, 3, 2, 9100000, '0000-00-00 00:00:00', 2, '7,8,9'),
+(87, 15, 3, 2, 9100000, '2024-08-14 17:00:00', 1, '7'),
+(88, 15, 27, 2, 14600000, '0000-00-00 00:00:00', 1, '1'),
+(89, 11, 14, 3, 17400000, '2024-08-14 17:00:00', 1, '1');
 
 -- --------------------------------------------------------
 
@@ -253,11 +334,19 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES
 (11, 'Revan', '11', 'revan1@gmail.com'),
 (12, 'adun', '111', 'adun@gmail.com'),
 (13, 'ope', 'opeope', 'ope@gmail.com'),
-(14, 'repan ', '111', 'repan1@gmail.com');
+(14, 'repan ', '111', 'repan1@gmail.com'),
+(15, 'Rizwan', '123', 'rzn@gmail');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `about`
+--
+ALTER TABLE `about`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `destination_cards_id` (`destination_cards_id`);
 
 --
 -- Indexes for table `destination_cards`
@@ -299,6 +388,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `about`
+--
+ALTER TABLE `about`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
 -- AUTO_INCREMENT for table `destination_cards`
 --
 ALTER TABLE `destination_cards`
@@ -314,7 +409,7 @@ ALTER TABLE `opsi_trip`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `payment_method`
@@ -326,11 +421,17 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `about`
+--
+ALTER TABLE `about`
+  ADD CONSTRAINT `about_ibfk_1` FOREIGN KEY (`destination_cards_id`) REFERENCES `destination_cards` (`id`);
 
 --
 -- Constraints for table `opsi_trip`

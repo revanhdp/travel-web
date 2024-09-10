@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 $user_id = $_SESSION['user_id'];
 $destination_cards_id = $_POST['destination_cards_id'];
 $jumlah_tiket = $_POST['jumlah_tiket'];
-$opsi_trip_ids = $_POST['opsi_trip_ids']; // Menyimpan opsi trip yang dipilih
+$opsi_trip_ids = explode(',', $_POST['opsi_trip_ids']); // Menyimpan opsi trip yang dipilih
 $order_date = $_POST['order_date'];
 $total_harga = $_POST['total_harga'];
 $payment_method_id = $_POST['payment_method_id'];
